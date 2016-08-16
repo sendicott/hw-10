@@ -1,0 +1,12 @@
+@import 'node_modules/foundation-sites/scss/foundation.scss';
+
+.block {
+    display: inline-block;
+    margin: 1%;
+    height: 200px;
+
+    border: 2px solid black;
+}
+
+@include foundation-global-styles;
+@include foundation-grid;
