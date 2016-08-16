@@ -9,9 +9,16 @@
 */
 
 function createUser() {
+    // -------------------------container-------------------------
+    let container = document.createElement('div')
+    container.classList.add('person');
+    let grandparent = document.querySelector('body');
+    grandparent.appendChild(container);
+    // -------------------------container-------------------------
 
+    // -------------------------Image-------------------------
     // Randomly choose an index from the array.
-    let userImages = ["men/18", "women/21", "men/22", "men/25", "men/42", "men/58", "men/3", "men/2", "men/0", "men/26", "women/1", "women/72", "women/92", "women/82", "women/38", "women/84", "women/85", "women/40", "women/52", "women/9"];
+    let userImages = ["men/18", "men/1", "men/9", "women/21", "men/26", "men/38", "women/40", "women/42", "women/60", "men/58", "women/3", "women/2", "men/0", "women/72", "women/82", "women/84", "women/85", "women/92"];
     // Math.random() gives us a number from 0-1
     // Multiply it by the lengths of the array to scale it up,
     // then round down.
@@ -21,16 +28,52 @@ function createUser() {
     user.src = "https://randomuser.me/api/portraits/" + userImages[chosen] + ".jpg";
     // Give it a 'block' class
     user.classList.add('block');
-    // Find a parent
-    let parent = document.querySelector('body');
     // Adopt
-    parent.appendChild(user);
+    container.appendChild(user);
+    // -------------------------Image-------------------------
+
+    // -------------------------Username-------------------------
+    let firstNameArray = ["Alabama", "Arantxa", "Atlas", "Bentlee", "Diem", "Drishti", "Fenella", "Greenlee", "Zerubbabel", "Huxley", "Hephzibah", "Jazz", "Katana", "Bandit", "Rogue", "Nyx", "Tennyson", "Tate", "Twinkle", "Valkyrie", "Zeppelin", "Zowie", "Cedar", "Ferris", "Ace", "Whizdom", "Krithik", "Protoss", "Terran", "Zerg"];
+    let secondNameArray = ["Daft", "Smellie", "Shufflebottom", "Dungworth", "Piggs", "Clutterbuck", "Bracegirdle", "Bonefat", "Turtle", "Rattlebag", "Willy", "Gunn", "Abramovich", "Aksyonov", "Akulov", "Dezhnyov", "Dragomirov", "Picklehammer", "Pattie", "Passwater", "Flournoy", "Ledbetter", "Snail", "Plexico", "Lavender", "Engelberger", "Fish", "Tshabalala", "Crackenbush", "Bloomgarden"]
+    let randomName1 = Math.floor(Math.random() * firstNameArray.length);
+    let randomName2 = Math.floor(Math.random() * secondNameArray.length);
+    let name = document.createElement('h2');
+    name.textContent = firstNameArray[randomName1] + " " + secondNameArray[randomName2];
+    name.classList.add('name');
+    container.appendChild(name);
+    // -------------------------Username-------------------------
+
+    // -------------------------Buttons-------------------------
+    let button1 = document.createElement('button');
+    button1.textContent = "Hello";
+    container.appendChild(button1);
+    button1.addEventListener('click', function () {
+        container.classList.add('opaque');
+        // let yep = document.createElement('h1');
+        // yep.textContent = "Yep!";
+        // yep.classList.add('stamp');
+        // container.appendChild(yep);
+    })
+
+    let button2 = document.createElement('button');
+    button2.textContent = "Goodbye";
+    container.appendChild(button2);
+    button2.addEventListener('click', function () {
+        container.classList.add('opaque');
+    })
+
+
+    // -------------------------Buttons-------------------------
+    
 }
 
+
+// -------------------------Repeat Creating Users-------------------------
 window.addEventListener('load', function () {
     for (let i = 0; i < 1; i++) {
         createUser();
     }
 
-    setInterval(createUser, 100000);
+    setInterval(createUser, 2000);
 })
+// -------------------------Repeat Creating Users-------------------------
